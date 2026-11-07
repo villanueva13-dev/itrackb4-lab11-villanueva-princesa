@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -28,15 +29,15 @@
         {{-- Genre Dropdown --}}
         <div class="mb-4">
             <label class="block text-gray-700 font-bold mb-1">Genre</label>
-            <select name="genre" class="w-full border p-2 rounded @error('genre') border-red-500 @enderror">
+            <select name="genre_id" class="w-full border p-2 rounded @error('genre_id') border-red-500 @enderror">
                 <option value="">Select Genre</option>
-                <option value="Fiction" @selected(old('genre') == 'Fiction')>Fiction</option>
-                <option value="Dystopian" @selected(old('genre') == 'Dystopian')>Dystopian</option>
-                <option value="Sci-Fi" @selected(old('genre') == 'Sci-Fi')>Sci-Fi</option>
-                <option value="Non-Fiction" @selected(old('genre') == 'Non-Fiction')>Non-Fiction</option>
-                <option value="Mystery" @selected(old('genre') == 'Mystery')>Mystery</option>
+                @foreach ($genres as $genre)
+                    <option value="{{ $genre->id }}" @selected(old('genre_id') == $genre->id)>
+                        {{ $genre->name }}
+                    </option>
+                @endforeach
             </select>
-            @error('genre')
+            @error('genre_id')
                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
         </div>
@@ -59,7 +60,9 @@
             @enderror
         </div>
 
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Save Book</button>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Save Book
+        </button>
     </form>
 </div>
 @endsection

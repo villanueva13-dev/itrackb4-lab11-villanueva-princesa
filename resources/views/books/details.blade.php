@@ -36,7 +36,7 @@
                 <div class="bg-gray-100 p-5 rounded-xl">
                     <p class="text-sm font-semibold text-gray-500">Genre</p>
                     <p class="text-xl font-bold text-blue-700 mt-1">
-                        {{ $book->genre }}
+                        {{ $book->genre->name }}
                     </p>
                 </div>
 

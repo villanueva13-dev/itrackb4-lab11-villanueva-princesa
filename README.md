@@ -38,3 +38,25 @@ Screenshot 6 showed **6 database queries**. One query retrieved the five books, 
 ### G3. What breaks if the `belongsTo` method is plural?
 
 The relationship method should be named `genre()` because each book belongs to one genre. If it is named `genres()`, code that uses `genre` or `with('genre')` will not find the relationship and may produce an undefined relationship error. The relationship name must be consistent throughout the application.
+
+---
+
+# ITRACKB4 Laboratory Activity 11 — Finish Your Own CRUD
+
+## Project Subject
+
+This project uses **Books** as its subject. It demonstrates the complete CRUD operations (Create, Read, Update, and Delete) using Laravel resource routes, route model binding, and Eloquent.
+
+## Part G: Questions & Answers
+
+### G1. What are the two requirements for Laravel route model binding to work?
+
+Laravel route model binding requires a model type hint in the controller method and a parameter name that matches the route parameter. In this project, `Book $book` matches the `{book}` parameter in the resource route, allowing Laravel to automatically retrieve the correct book record.
+
+### G2. Why does clicking a Delete link open the detail page instead of deleting the record?
+
+An ordinary HTML link sends a GET request. Laravel matches the GET request to the `books.show` route, which displays the book details. Deleting a record requires a DELETE request, so the form must use `@method('DELETE')`.
+
+### G3. Why is `old('title', $book->title)` better than using only `old('title')`?
+
+The `old()` function retrieves the previously entered value after validation fails. The second argument, `$book->title`, provides the existing title when the edit page first loads. This ensures that the form displays the saved information instead of appearing blank.

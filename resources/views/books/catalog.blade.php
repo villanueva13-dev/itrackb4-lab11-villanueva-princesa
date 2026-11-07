@@ -66,6 +66,16 @@
                            class="text-blue-600 hover:text-blue-800 text-sm font-semibold">
                             View Details →
                         </a>
+
+                        <form action="{{ route('books.destroy', $book) }}" method="POST"
+      onsubmit="return confirm('Are you sure you want to delete this book?')">
+    @csrf
+    @method('DELETE')
+
+    <button type="submit" class="text-red-600 hover:underline">
+        Delete
+    </button>
+</form>
                     </div>
                 </div>
             @endforeach

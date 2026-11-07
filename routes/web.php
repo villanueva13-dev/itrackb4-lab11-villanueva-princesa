@@ -7,7 +7,7 @@ Route::get('/', function () {
     return redirect()->route('books.index');
 });
 
-Route::resource('books', BookController::class)->only(['index', 'create', 'store', 'show']);
+Route::resource('books', BookController::class);
 
 // Compatibility route used by the existing details Blade page.
 Route::get('/books-catalog', function () {
